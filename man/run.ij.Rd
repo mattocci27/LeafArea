@@ -19,7 +19,7 @@ run.ij(path.imagej = NULL, set.memory = 8, set.directory, distance.pixel = 826,
 Path to ImageJ. Deafult uses C:/Program Files/ImageJ for Windows, and /Applications/ImageJ for Mac. Linux always needs to specify the path to ImageJ.
 }
   \item{set.memory}{
-Set memory (GB) for image analysis (default = 8). 
+Set memory (GB) for image analysis (default = 4). 
 }
   \item{set.directory}{
 Set directory that contains leaf images. For example, when the directory named 'leaf_data' is on desktop of Mac, the path can be specified as: set.directory ='~/Desktop/leaf_data'. For Windows: set.directory='C:/Users/<users name>/Desktop/leaf_data'. No default. The path to the target directory that contains leaf images should always be specified. Note that spaces in file or direcotry names are not allowed.  
