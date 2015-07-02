@@ -59,13 +59,9 @@ if(check.image==T) {
 #use it in imageJ
 if (os == "windows"){
 
-	# if (length(strsplit(set.directory," ")[[1]]) >1) set.directoy <- paste('"',set.directory,'"',sep="")
-
-	bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro, ' "',set.directory,'"\n pause\n exit',sep="")
-
-		# bat <- paste("pushd ", path.imagej, "\n jre/bin/java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro," ",set.directory,"\n pause\n exit",sep="")
-
-	# bat <- paste("pushd ",pathimagej, " -jar -Xmx2g ij.jar -macro " ,tempmacro," ",set.directory,"\n pause\n exit",sep="")
+	if (length(strsplit(set.directory," ")[[1]]) >1) {
+	bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro, ' "',set.directory,'"\n pause\n exit',sep="") 
+	} else bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro," ",set.directory,"\n pause\n exit",sep="")
 
 	tempbat <- paste(tempfile('bat'),".bat",sep="")
 
@@ -82,7 +78,7 @@ if (os == "windows"){
 		# this allows space in path
 		set.directory <- gsub(" ", "\\ ", set.directory, fixed=TRUE)
 
-		unix.check <-Sys.info()["sysname"]
+		unix.check <- Sys.info()["sysname"]
 		if(unix.check=="Linux") {
 			system(paste("java -Xmx",set.memory,"g -jar ",path.imagej,"ij.jar -ijpath ",path.imagej," ",exe,tempmacro," ",set.directory,sep=""),wait=wait)
 		} else {system(paste("java -Xmx",set.memory,"g -jar ",path.imagej,"ImageJ64.app/Contents/Resources/Java/ij.jar -ijpath ",path.imagej," ",exe,tempmacro," ",set.directory,sep=""),wait=wait)
