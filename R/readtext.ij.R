@@ -7,6 +7,12 @@ readtext.ij <-function(path){
 	file.name<-length(0)
 
 	data <- list()
+
+	temp.slash <- substr(path,nchar(path),nchar(path))
+		if(temp.slash!="/" & temp.slash!="\\"){
+			path <- paste(path,"/",sep="")
+		}		 
+
 	for (i in 1:length(file.list))
 	{
 	temp <- read.delim(paste(path,file.list[i],sep=""))
