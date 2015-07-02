@@ -2,7 +2,7 @@ Package: LeafArea
 Type: Package
 Title: Rapid Digital Image Analysis of Leaf Area
 Version: 0.1.1
-Date: 2015-07-01
+Date: 2015-07-02
 Author: Masatoshi Katabuchi <mattocci27@gmail.com>
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
 Description: An interface for the image processing program ImageJ, which allows a rapid digital image analysis for particle sizes. This package includes function to write an ImageJ macro which is optimized for a leaf area analysis by default.
