@@ -23,6 +23,3 @@ readtext.ij <-function(path){
 	return(data)
 	}
 
-
-
-
