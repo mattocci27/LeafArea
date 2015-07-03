@@ -7,7 +7,7 @@ Automated leaf area analysis}
 Analyzes leaf area in the target directory automatically, and returns a data frame that contains sample names in the first column and total leaf area (cm2) of the sample (e.g., one individual plant or one ramet) in the second column. Note that run.ij does not count the number of leaves in each image; therefore if the user requires the number of leaves per image, the user must record these values.
 }
 \usage{
-run.ij(path.imagej = NULL, set.memory = 8, set.directory, distance.pixel = 826,
+run.ij(path.imagej = NULL, set.memory = 4, set.directory, distance.pixel = 826,
  known.distance = 21, trim.pixel = 20, low.circ = 0, upper.circ = 1,
   low.size = 0.7, upper.size = "Infinity", prefix = "\\\\.|-",log=F,
   check.image=F,save.image=F)
