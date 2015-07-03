@@ -100,10 +100,10 @@ list.files(ex.dir)
 #run automated images analysis
 run.ij(set.directory = ex.dir, save.image=TRUE)
 
-# note: in this example, anlyzed images are exported to a temporary 
+# note: in this example, analyzed images are exported to a temporary 
 # directory, which will be eventually deleted. 
 # If you choose your home directory as the target directory, 
-# anlyzed images will be exported to it.
+# analyzed images will be exported to it.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
