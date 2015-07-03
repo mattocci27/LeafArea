@@ -1,6 +1,0 @@
-load("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea/data/leafdata.RData")
-ls()
-??Rdata
-load("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea/data/leafdata.RData")
-ls()
-moge
