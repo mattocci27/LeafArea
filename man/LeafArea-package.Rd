@@ -18,7 +18,7 @@ The package LeafArea allows one to conveniently run ImageJ software within R. Th
 Package: \tab LeafArea\cr
 Type: \tab Package\cr
 Version: \tab 0.1.1\cr
-Date: \tab 2015-07-02\cr
+Date: \tab 2015-07-03\cr
 License: \tab GPL-2\cr
 }
 
