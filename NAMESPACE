@@ -1,2 +1,6 @@
 # Export all names
 exportPattern(".")
+
+# import default packages
+importFrom("stats", "aggregate")
+importFrom("utils", "read.delim")
