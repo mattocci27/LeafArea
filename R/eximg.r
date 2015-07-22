@@ -1,5 +1,12 @@
 eximg <- function(){
-os<-.Platform$OS.type
+os <-.Platform$OS.type
+if (os == "windows"){temp <- paste(tempdir(),"\\",sep="")} else {temp <- paste(tempdir(),"/",sep="")
+}
+    cd <- getwd()
+	setwd(temp)
+	unlink(list.files(temp))
+	setwd(cd)
+
 if (os == "windows") {
 	temp <- tempdir()
 	imagedir <- system.file("images",package="LeafArea")
