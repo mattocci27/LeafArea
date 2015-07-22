@@ -26,8 +26,11 @@ if (os=="windows"){
 	#slash is replaced by backslash because they don't work in batch
 	path.imagej <- gsub("/","\\\\",path.imagej)
 
-	if(file.exists(paste(path.imagej,"ImageJ.exe",sep=""))!=T & file.exists(paste(path.imagej,"ImageJ.exe",sep="/"))!=T) {warning("Specify the correct path to ImageJ")
-			return("ImageJ not found")}
+	if(file.exists(paste(path.imagej,"ij.jar",sep=""))!=T & file.exists(paste(path.imagej,"ij.jar",sep="/"))!=T) {warning("ij.jar was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java") 
+		return("ImageJ not found")
+	}  else if (file.exists(paste(path.imagej,"jre/bin/java.exe",sep=""))!=T & file.exists(paste(path.imagej,"jre/bin/java.exe",sep="/"))!=T) {warning("java was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java") 
+		return("ImageJ not found")
+	}
 } else {
 	unix.check <-Sys.info()["sysname"]
 		if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ64.app"
