@@ -87,7 +87,7 @@ Masatoshi Katabuchi <mattocci27@gmail.com>}
 \code{\link{eximg}} 
 }
 \examples{
-# As long as ImageJ application is installed in the following directory,
+# As long as ImageJ application, including ij.jar and java, is installed in the following directory,
 # you do not have to specify the path to ImageJ
 # /Applications/ImageJ <Mac>
 # C:/Program Files/ImageJ <Windows>
