@@ -16,13 +16,13 @@ run.ij(path.imagej = NULL, set.memory = 4, set.directory, distance.pixel = 826,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{path.imagej}{
-Path to ImageJ. Deafult uses C:/Program Files/ImageJ for Windows, and /Applications/ImageJ for Mac. Linux always needs to specify the path to ImageJ.
+Path to ImageJ. Default uses C:/Program Files/ImageJ for Windows, and /Applications/ImageJ for Mac. Linux always needs to specify the path to ImageJ.
 }
   \item{set.memory}{
 Set memory (GB) for image analysis (default = 4). 
 }
   \item{set.directory}{
-Set directory that contains leaf images. For example, when the directory named 'leaf_data' is on desktop of Mac, the path can be specified as: set.directory ='~/Desktop/leaf_data'. For Windows: set.directory='C:/Users/<users name>/Desktop/leaf_data'. No default. The path to the target directory that contains leaf images should always be specified. Note that spaces in file or direcotry names are not allowed.  
+Set directory that contains leaf images. For example, when the directory named 'leaf_data' is on desktop of Mac, the path can be specified as: set.directory ='~/Desktop/leaf_data'. For Windows: set.directory='C:/Users/<users name>/Desktop/leaf_data'. No default. The path to the target directory that contains leaf images should always be specified. Note that spaces in file or directory names are not allowed.  
 }
   \item{distance.pixel}{
 Number of pixels for the known distance. When leaf images were captured in A4 image size with 100 ppi, the pixel density is roughly equal to 826 pixels per 21 cm. In this case, the calibration scale can be specified as distance.pixel = 826, known.distance =21. 
@@ -53,13 +53,13 @@ Regular expression to manage file names. The run.ij combines the leaf area of al
 }
 
  \item{log}{
-Should mean leaf areas of each single image kept? (defalt = FALSE)
+Should mean leaf areas of each single image kept? (default = FALSE)
 }
  \item{check.image}{
-Whether to disply analyzed images by using ImageJ software (defalt = FALSE). When you choose check.image = TRUE, press any keys to close ImageJ. Note that when check.image = TRUE, the analysis would take considerable time. Note this option may only work on R console.}
+Whether to display analyzed images by using ImageJ software (default = FALSE). When you choose check.image = TRUE, press any keys to close ImageJ. Note that when check.image = TRUE, the analysis would take considerable time. Note this option may only work on R console.}
 
  \item{save.image}{
-Whether to save analyzed images (defalt = FALSE).}
+Whether to save analyzed images (default = FALSE).}
 }
 
 \value{

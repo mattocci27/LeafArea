@@ -11,7 +11,7 @@ eximg()
 }
 %- maybe also 'usage' for other objects documented here.
 \value{
-Jpeg files to R temprary directory and a path to the sample image files.
+Jpeg files to the R temporary directory and a path to the sample image files.
 }
 
 \author{

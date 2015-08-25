@@ -21,7 +21,7 @@ A path for ImageJ application. On unix this will always be "/Applications/ImageJ
 }
 
 \details{
-When ImageJ, including ij.jar and java, is not installed in the common location, users need to specify the path to ImageJ in \code{\link{run.ij}}.	
+When ImageJ, including ij.jar and Java, is not installed in the common location, users need to specify the path to ImageJ in \code{\link{run.ij}}.	
 }
 
 \author{
