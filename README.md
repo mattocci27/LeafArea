@@ -26,5 +26,100 @@ To analyze your leaf images, you need to specify the path to directory that cont
 ## 3.3 Example
 This is an example in the R help. First, I use `eximg` function to specify the path to example leaf images in the R temporary directory. Then, I run the `run.ij` function which will analyze leaf area automatically:
 
-	ex.dir <- eximg()
-	res <- run.ij(set.direcotry = ex.dir)
+    ex.dir <- eximg()
+    res <- run.ij(set.direcotry = ex.dir)
+
+The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column and total leaf area of sample (cm2) in the second column.
+
+    res
+    #>   sample  total.leaf.area
+    #> 1     A1         350.340
+    #> 2   A123         418.473
+    #> 3     A2         177.188
+    #> 4   A300         384.919
+
+## 4 Automated leaf area analysis
+You can change the following setting according to your images.
+
+### 4.1 Spatial calibration
+You need to tell `LeafArea` what a pixel represents in real-world terms of distance. When leaf images are captured in A4 image size with 100 ppi, the pixel density is roughly equal to 826 pixels per 21 cm. In this case, the calibration scale can be specified as `run.ij (distance.pixel = 826, known.distance =21)``.
+
+### 4.2 Memory setting
+The amount of memory available can be increased. By default, `LeafArea` uses 4 GB of memory. Typing `run.ij (set.memory = 8)` will allocate 8 GB of memory to `LeafArea`.
+
+### 4.3 Trimming images
+The edges of images may have shadowing, which can affect image analysis (i.e., ImageJ may recognize the shaded area as leaf area). The edges of images can be removed by specifying the number of pixels (default = 20). For example, `run.ij (trim.pixel = 20)` will remove 20 pixels from the edges of each image.
+
+### 4.4 Size and circularity
+Leaf images often contain dirt and dust. To prevent dust from affecting the image analysis, the lower limit of analyzed size can be specified. For example, typing `run.ij (low.size = 0.7)` will remove objects smaller than 0.7 cm2 in the analysis.
+
+When you want to remove angular objects (e.g., cut petioles, square papers for scale) from the images, the analyzed lower limit of circularity can be increased (default = 0). For example, `run.ij (low.circ = 0.3)` will skip cut petioles from the analysis.
+
+### 4.5 File naming
+By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (See 2 Image Capture and file naming and Fig. 2 in the main text). You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
+
+### 4.6 Result log
+A list object of data frames of area (cm2) of each object in each image can be returned by typing `run.ij (log = T)`:
+
+    ex.dir <- eximg()
+    run.ij(set.directory = ex.dir, log = T)
+
+    #> $summary
+    #>   sample total.leaf.area
+    #> 1     A1         350.340
+    #> 2   A123         418.473
+    #> 3     A2         177.188
+    #> 4   A300         384.919
+    #>
+    #> $each.image
+    #> $each.image$`A1-01.jpeg.txt`
+    #>      Area
+    #> 1 116.799
+    #> 2 124.069
+    #>
+    #> $each.image$`A1-02.jpeg.txt`
+    #>      Area
+    #> 1 109.472
+    #>
+    #> $each.image$`A123-01.jpeg.txt`
+    #>      Area
+    #> 1 184.773
+    #>
+    #> $each.image$`A123-02.jpeg.txt`
+    #>      Area
+    #> 1 123.151
+    #> 2 110.549
+    #>
+    #> $each.image$A2.jpeg.txt
+    #>     Area
+    #> 1 43.328
+    #> 2 47.558
+    #> 3 41.427
+    #> 4 44.875
+    #>
+    #> $each.image$`A300-1.jpeg.txt`
+    #>      Area
+    #> 1 158.065
+    #>
+    #> $each.image$`A300-2.jpeg.txt`
+    #>      Area
+    #> 1 124.784
+    #> 2 102.070
+
+By default, `run.ij` returns a single data frame object, which contains name of samples in the first column and total leaf area of sample (cm2) in the second column (see 3.0).
+
+
+### 4.7 Saving analyzed images
+Analyzed images can be exported in the same directory as `set.directory` for error checking. Typing `run.ij (save.image = TRUE)` will export analyzed images. If you use the eximg function to set the target directory, analyzed images will be exported to a temporary directory, which will be eventually deleted. If you choose your home directory as the target directory, analyzed images will be exported to it.
+
+### 4.7 Displaying analyzed images
+Analyzed image can be displayed by using ImageJ software `(defalt = FALSE)`. When you choose `run.ij (check.image = TRUE)`, press any keys to close ImageJ. Note that when `check.image = TRUE`, the analysis would take considerable time. This option may only work on R console.
+
+5 Manual leaf area analysis
+You can skip this step if ImageJ succeeds in analyzing the leaf images. If ImageJ fails to recognize leaf images (Fig. S2A), you can manually guide the image analysis for particular images through ImageJ GUI (See the ImageJ user guide 30.1 Measure...[m], http://imagej.nih.gov/ij/docs/guide/user-guide.pdf). The results for these manually-analyzed images will still be handled by the file management function resmerge.ij in run.ij. Multiple tab-delimited text files with a leaf area value (one text file for each original JPEG image file) generated by ImageJ can be merged into a single data frame. The names of text files should be the same as the image files (e.g., A123-1.txt, A123-2.txt, A123-3.txt). For example, when the text files are on the desktop of a Mac, files can be merged using `resmerge.ij(“~/Desktop”)`:
+
+    resmerge.ij(“~/Desktop”)
+    #>   sample  total.leaf.area
+    #> 1   A123         418.473
+
+The output and the option “prefix” are same as `run.ij`. See `?resmerge.ij` in R for a more detailed description.
