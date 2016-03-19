@@ -2,7 +2,12 @@
 # LeafArea
 The package LeafArea allows one to conveniently run ImageJ software within R. The package provides a user-friendly, automated tool for measuring leaf area from digital images. For more information on ImageJ, see the ImageJ User Guide, which is available [http://imagej.nih.gov/ij/](url).
 
-Maintainer: Masatoshi Katabuchi
+
+The ImageJ function `run.ij` computes the total area of all leaves (or leaf sections) in each image file in the target directory. Original leaf images are converted to black and white from threshold intensity levels, then leaf area is calculated by using leaf pixel counts and the calibration scale. The user can determine if the analyzed images will be saved for error checking: `run.ij (save.image = TRUE)` or `run.ij (save.image = FALSE)`.
+
+![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig1_final.tif)
+
+
 ## 1 Prerequisites
 From within R (>= 3.0.0), you can install:
 * the latest version of LeafArea from CRAN with
@@ -15,12 +20,14 @@ From within R (>= 3.0.0), you can install:
     # install.packages("devtools")
     devtools::install_gitub(mattocci27/LeafArea)
     ````
-The package LeafArea needs ImageJ software, which is available from http://imagej.nih.gov/ij/. Details on how to install ImageJ on Linux, Mac OS X and Windows are available at http://imagej.nih.gov/ij/docs/install/. For Mac, the default install directory of ImageJ is “/Applications/ImageJ”. For Windows, "C:/Program Files/ImageJ”. Otherwise, you need to specify the path to ImageJ to use LeafArea in R (see 3.1 Setting path to ImageJ). Note that in Linux system, ImageJ should be installed from the above URL instead of command lines. Java is also required, which is available at https://java.com/en/.
+The package LeafArea requires ImageJ software, which is available from http://imagej.nih.gov/ij/. Details on how to install ImageJ on Linux, Mac OS X and Windows are available at http://imagej.nih.gov/ij/docs/install/. For Mac, the default install directory of ImageJ is “/Applications/ImageJ”. For Windows, "C:/Program Files/ImageJ”. Otherwise, you need to specify the path to ImageJ to use LeafArea in R (see 3.1 Setting path to ImageJ). Note that in Linux system, ImageJ should be installed from the above URL instead of via the command lines. Java is also required, which is available at https://java.com/en/.
 
 ## 2 Image capture and file naming
 Capture leaf images by using a scanner and save them as jpeg or tiff files. Image size and resolution should be consistent across all the image files because the `LeafArea` functions estimate leaf area based on leaf pixel counts and the image size. Therefore, the `LeafArea` package does not support images from digital cameras, where the resolution depends on the distance of the camera to the object.
 
 The `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. For example, the areas of leaf images named A123-1.jpeg, A123-2.jpeg, and A123-3.jpeg would be combined into a single total leaf area (A123). This feature allows the user to treat multiple images as belonging to a single sample, if desired. Note that the functions in the package do not count the number of leaves in each image. If the user requires the number of leaves per image, the user must record these values by themselves.
+
+![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig2_final.png)
 
 ## 3 How to run LeafArea
 ### 3.1 Setting path to ImageJ
@@ -72,10 +79,7 @@ When you want to remove angular objects (e.g., cut petioles, square papers for s
 
 
 ### 4.5 File naming
-By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (See 2 Image Capture and file naming and Fig. 2 in the main text). You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
-
-![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig2_final.png)
-
+By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
 
 ### 4.6 Result log
 A list object of data frames of area (cm<sup>2</sup>) of each object in each image can be returned by typing `run.ij (log = T)`:
@@ -135,8 +139,8 @@ Analyzed images can be exported in the same directory as `set.directory` for err
 ### 4.7 Displaying analyzed images
 Analyzed image can be displayed by using ImageJ software `(defalt = FALSE)`. When you choose `run.ij (check.image = TRUE)`, press any keys to close ImageJ. Note that when `check.image = TRUE`, the analysis would take considerable time. This option may only work on R console.
 
-5 Manual leaf area analysis
-You can skip this step if ImageJ succeeds in analyzing the leaf images. If ImageJ fails to recognize leaf images (Fig. S2A), you can manually guide the image analysis for particular images through ImageJ GUI (See the ImageJ user guide 30.1 Measure...[m], http://imagej.nih.gov/ij/docs/guide/user-guide.pdf). The results for these manually-analyzed images will still be handled by the file management function resmerge.ij in run.ij. Multiple tab-delimited text files with a leaf area value (one text file for each original JPEG image file) generated by ImageJ can be merged into a single data frame. The names of text files should be the same as the image files (e.g., A123-1.txt, A123-2.txt, A123-3.txt). For example, when the text files are on the desktop of a Mac, files can be merged using `resmerge.ij(“~/Desktop”)`:
+## 5 Manual leaf area analysis
+You can skip this step if ImageJ succeeds in analyzing the leaf images. If ImageJ fails to recognize leaf images, you can manually guide the image analysis for particular images through ImageJ GUI (See the ImageJ user guide 30.1 Measure...[m], http://imagej.nih.gov/ij/docs/guide/user-guide.pdf). The results for these manually-analyzed images will still be handled by the file management function resmerge.ij in run.ij. Multiple tab-delimited text files with a leaf area value (one text file for each original JPEG image file) generated by ImageJ can be merged into a single data frame. The names of text files should be the same as the image files (e.g., A123-1.txt, A123-2.txt, A123-3.txt). For example, when the text files are on the desktop of a Mac, files can be merged using `resmerge.ij(“~/Desktop”)`:
 
 ```` r
 resmerge.ij(“~/Desktop”)
