@@ -63,7 +63,13 @@ The edges of images may have shadowing, which can affect image analysis (i.e., I
 ### 4.4 Size and circularity
 Leaf images often contain dirt and dust. To prevent dust from affecting the image analysis, the lower limit of analyzed size can be specified. For example, typing `run.ij (low.size = 0.7)` will remove objects smaller than 0.7 cm<sup>2</sup> in the analysis.
 
+![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/size.png)
+
+
 When you want to remove angular objects (e.g., cut petioles, square papers for scale) from the images, the analyzed lower limit of circularity can be increased (default = 0). For example, `run.ij (low.circ = 0.3)` will skip cut petioles from the analysis.
+
+![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/circ.png)
+
 
 ### 4.5 File naming
 By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (See 2 Image Capture and file naming and Fig. 2 in the main text). You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
