@@ -5,7 +5,7 @@ The package LeafArea allows one to conveniently run ImageJ software within R. Th
 
 The ImageJ function `run.ij` computes the total area of all leaves (or leaf sections) in each image file in the target directory. Original leaf images are converted to black and white from threshold intensity levels, then leaf area is calculated by using leaf pixel counts and the calibration scale. The user can determine if the analyzed images will be saved for error checking: `run.ij (save.image = TRUE)` or `run.ij (save.image = FALSE)`.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig1_final.tif", width="320px">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig1_final.png", width="320px">
 
 
 ## 1 Prerequisites
