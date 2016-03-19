@@ -74,7 +74,7 @@ When you want to remove angular objects (e.g., cut petioles, square papers for s
 ### 4.5 File naming
 By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (See 2 Image Capture and file naming and Fig. 2 in the main text). You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
 
-![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig2_final.eps)
+![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig2_final.png)
 
 
 ### 4.6 Result log
