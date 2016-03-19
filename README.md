@@ -36,7 +36,7 @@ When ImageJ is not installed in the common install directory, you need to specif
 ### 3.2 Setting path to leaf images
 To analyze your leaf images, you need to specify the path to directory that contains leaf images. This depends on the operating system being used (Windows, Linux or Mac). For example, when the target directory named "leaf data" is on desktop of Mac or Linux, you can specify the path by typing `run.ij (set.directory = "~/Desktop/leaf data/")`. Typing `run.ij (set.directory = "C:/Users/<username>/Desktop/leaf data")` works in Windows.
 
-## 3.3 Example
+### 3.3 Example
 This is an example in the R help. First, I use `eximg` function to specify the path to example leaf images in the R temporary directory. Then, I run the `run.ij` function which will analyze leaf area automatically:
 ```` r
 ex.dir <- eximg()
@@ -136,7 +136,7 @@ By default, `run.ij` returns a single data frame object, which contains name of 
 ### 4.7 Saving analyzed images
 Analyzed images can be exported in the same directory as `set.directory` for error checking. Typing `run.ij (save.image = TRUE)` will export analyzed images. If you use the eximg function to set the target directory, analyzed images will be exported to a temporary directory, which will be eventually deleted. If you choose your home directory as the target directory, analyzed images will be exported to it.
 
-### 4.7 Displaying analyzed images
+### 4.8 Displaying analyzed images
 Analyzed image can be displayed by using ImageJ software `(defalt = FALSE)`. When you choose `run.ij (check.image = TRUE)`, press any keys to close ImageJ. Note that when `check.image = TRUE`, the analysis would take considerable time. This option may only work on R console.
 
 ## 5 Manual leaf area analysis
