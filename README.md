@@ -18,7 +18,7 @@ From within R (>= 3.0.0), you can install:
 * the latest development version from github with
     ````r
     # install.packages("devtools")
-    devtools::install_gitub(mattocci27/LeafArea)
+    devtools::install_github(mattocci27/LeafArea)
     ````
 The package LeafArea requires ImageJ software, which is available from http://imagej.nih.gov/ij/. Details on how to install ImageJ on Linux, Mac OS X and Windows are available at http://imagej.nih.gov/ij/docs/install/. For Mac, the default install directory of ImageJ is “/Applications/ImageJ”. For Windows, "C:/Program Files/ImageJ”. Otherwise, you need to specify the path to ImageJ to use LeafArea in R (see 3.1 Setting path to ImageJ). Note that in Linux system, ImageJ should be installed from the above URL instead of via the command lines. Java is also required, which is available at https://java.com/en/.
 
