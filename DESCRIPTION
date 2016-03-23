@@ -8,7 +8,7 @@ Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
 Description: An interface for the image processing program ImageJ, which allows a rapid digital image analysis for particle sizes. This package includes function to write an ImageJ macro which is optimized for a leaf area analysis by default.
 Depends: R (>= 3.0.0)
 Imports: stats, utils
-SystemRequirements: ImageJ (>=1.48), ij.jar (see http://imagej.nih.gov/ij/), Java
+SystemRequirements: ImageJ (>=1.49), ij.jar (see http://imagej.nih.gov/ij/), Java
 License: GPL-2
 BugReports:https://github.com/mattocci27/LeafArea/issues
 URL:https://github.com/mattocci27/LeafArea
