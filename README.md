@@ -41,7 +41,7 @@ To analyze your leaf images, you need to specify the path to directory that cont
 This is an example in the R help. First, I use `eximg` function to specify the path to example leaf images in the R temporary directory. Then, I run the `run.ij` function which will analyze leaf area automatically:
 ```` r
 ex.dir <- eximg()
-res <- run.ij(set.direcotry = ex.dir)
+res <- run.ij(set.directory = ex.dir)
 ````
 
 The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column and total leaf area of sample (cm<sup>2</sup>) in the second column.
