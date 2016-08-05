@@ -1,5 +1,7 @@
-readtext.ij <-function(path){
-	file.list<-list.files(path)
+#' @importFrom utils read.delim
+#' @exportPattern "."
+readtext.ij <- function(path){
+	file.list <- list.files(path)
 	file.list <- file.list[grep(".txt$",file.list)]
 	if (length(file.list[-grep("macro|bat",file.list)]!=0)) file.list <- file.list[-grep("macro|bat",file.list)]
 
@@ -11,7 +13,7 @@ readtext.ij <-function(path){
 	temp.slash <- substr(path,nchar(path),nchar(path))
 		if(temp.slash!="/" & temp.slash!="\\"){
 			path <- paste(path,"/",sep="")
-		}		 
+		}
 
 	for (i in 1:length(file.list))
 	{
@@ -22,4 +24,3 @@ readtext.ij <-function(path){
 	}
 	return(data)
 	}
-

@@ -11,10 +11,11 @@ find.ij <- function(ostype = .Platform$OS.type){
       warning("Specify the path to ImageJ")
     return("ImageJ not found")} else {
 
-    if(file.exists("/Applications/ImageJ/ImageJ.app")!=T & file.exists("/Applications/ImageJ/ImageJ64.app")!=T){
-    warning("ImageJ was not found in the common install location on your system; When you run run.ij, specify the path to ImageJ or try installing ImageJ to /Applications/ImageJ/")
-    return("ImageJ not found")
-    } else return("/Applications/ImageJ/")
-    }
+    imagej <- system("mdfind ImageJ.app", intern = TRUE)[1]
+    if(length(imagej) != 0) return(imagej) else {
+      warning("ImageJ.app was not found in the common install location on your system; When you run run.ij, specify the path to ImageJ.app")
+      return("ImageJ not found")
+          }
       }
+    }
 }

@@ -1,6 +1,8 @@
-^._Store$
-^\\.history$
-^\\.git$
-^README\\.md$
-^cran-comments\\.md$
-\\.gitignore
+^\.DS_Store$
+^\.history$
+.git
+.gitignore
+^build\.txt$
+^note\.R$
+^README\.md$
+^cran-comments\.md$
