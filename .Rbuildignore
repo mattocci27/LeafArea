@@ -1,0 +1,6 @@
+^._Store$
+^\\.history$
+^\\.git$
+^README\\.md$
+^cran-comments\\.md$
+\\.gitignore
