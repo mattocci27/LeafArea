@@ -7,7 +7,7 @@ if (length(file.list) == 0) return("No images in the directory")
 
 temp.slash <- substr(set.directory,nchar(set.directory),nchar(set.directory))
 if(temp.slash!="/" & temp.slash!="\\"){
-	set.directory <- paste(set.directory,"/",sep="")
+  set.directory <- paste(set.directory,"/",sep="")
 }
 
 circ.arg <- paste(low.circ,upper.circ,sep="-")
@@ -23,19 +23,19 @@ if(imagej=="ImageJ not found") return("ImageJ not found") else path.imagej <- im
 
 ##additional check
 if (os=="windows"){
-	#slash is replaced by backslash because they don't work in batch
-	path.imagej <- gsub("/","\\\\",path.imagej)
+  #slash is replaced by backslash because they don't work in batch
+  path.imagej <- gsub("/","\\\\",path.imagej)
 
-	if(file.exists(paste(path.imagej,"ij.jar",sep=""))!=T & file.exists(paste(path.imagej,"ij.jar",sep="/"))!=T) {warning("ij.jar was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java")
-		return("ImageJ not found")
-	}  else if (file.exists(paste(path.imagej,"jre/bin/java.exe",sep=""))!=T & file.exists(paste(path.imagej,"jre/bin/java.exe",sep="/"))!=T) {warning("java was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java")
-		return("ImageJ not found")
-	}
+  if(file.exists(paste(path.imagej,"ij.jar",sep=""))!=T & file.exists(paste(path.imagej,"ij.jar",sep="/"))!=T) {warning("ij.jar was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java")
+    return("ImageJ not found")
+  }  else if (file.exists(paste(path.imagej,"jre/bin/java.exe",sep=""))!=T & file.exists(paste(path.imagej,"jre/bin/java.exe",sep="/"))!=T) {warning("java was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java")
+    return("ImageJ not found")
+  }
  } #else {
-# 	unix.check <-Sys.info()["sysname"]
-# 		if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ.app"
-# 	if(file.exists(paste(path.imagej,look,sep=""))!=T & file.exists(paste(path.imagej,look,sep="/"))!=T) {warning("Specify the correct path to ImageJ")
-# 			return("ImageJ not found")}
+#   unix.check <-Sys.info()["sysname"]
+#     if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ.app"
+#   if(file.exists(paste(path.imagej,look,sep=""))!=T & file.exists(paste(path.imagej,look,sep="/"))!=T) {warning("Specify the correct path to ImageJ")
+#       return("ImageJ not found")}
 # }
 
 
@@ -54,37 +54,37 @@ write(macro, file=tempmacro)
 # pathimagej <- system.file("java",package="LeafArea")
 
 if(check.image==T) {
-	exe <- "-macro "
-	wait = FALSE} else {
-		exe <- "-batch "
-		wait = TRUE}
+  exe <- "-macro "
+  wait = FALSE} else {
+    exe <- "-batch "
+    wait = TRUE}
 
 #use it in imageJ
 if (os == "windows"){
 
-	if (length(strsplit(set.directory," ")[[1]]) >1) {
-	bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro, ' "',set.directory,'"\n pause\n exit',sep="")
-	} else bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro," ",set.directory,"\n pause\n exit",sep="")
+  if (length(strsplit(set.directory," ")[[1]]) >1) {
+  bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro, ' "',set.directory,'"\n pause\n exit',sep="")
+  } else bat <- paste("pushd ", path.imagej, "\n jre\\bin\\java -jar -Xmx",set.memory,"g ij.jar ",exe ,tempmacro," ",set.directory,"\n pause\n exit",sep="")
 
-	tempbat <- paste(tempfile('bat'),".bat",sep="")
+  tempbat <- paste(tempfile('bat'),".bat",sep="")
 
-	write(bat, file=tempbat)
+  write(bat, file=tempbat)
 
-	shell(tempbat,wait=wait)
+  shell(tempbat,wait=wait)
 
-	} else {
-		temp.slash2 <- substr(path.imagej,nchar(path.imagej),nchar(path.imagej))
-		if(temp.slash2!="/" ){
-			path.imagej <- paste(path.imagej,"/",sep="")
-		}
+  } else {
+    temp.slash2 <- substr(path.imagej,nchar(path.imagej),nchar(path.imagej))
+    if(temp.slash2!="/" ){
+      path.imagej <- paste(path.imagej,"/",sep="")
+    }
 
-		# this allows space in path
-		set.directory <- gsub(" ", "\\ ", set.directory, fixed=TRUE)
+    # this allows space in path
+    set.directory <- gsub(" ", "\\ ", set.directory, fixed=TRUE)
 
-		unix.check <- Sys.info()["sysname"]
-		if(unix.check == "Linux") {
-			system(paste("java -Xmx", set.memory, "g -jar ",path.imagej,"ij.jar -ijpath ",path.imagej," ",exe,tempmacro," ", set.directory, sep = ""), wait = wait)
-		} else {system(paste("java -Xmx", set.memory, "g -jar ", path.imagej, "Contents/Resources/Java/ij.jar -ijpath ", path.imagej, " ", exe, tempmacro, " ", set.directory, sep = ""), wait = wait)
+    unix.check <- Sys.info()["sysname"]
+    if(unix.check == "Linux") {
+      system(paste("java -Xmx", set.memory, "g -jar ",path.imagej,"ij.jar -ijpath ",path.imagej," ",exe,tempmacro," ", set.directory, sep = ""), wait = wait)
+    } else {system(paste("java -Xmx", set.memory, "g -jar ", path.imagej, "Contents/Resources/Java/ij.jar -ijpath ", path.imagej, " ", exe, tempmacro, " ", set.directory, sep = ""), wait = wait)
  }
 }
 
@@ -94,22 +94,22 @@ if (os == "windows"){
 
 #kill imageJ
 if(check.image==T){
-	ans <- readline("Do you want to close ImageJ? Press any keys when you finish cheking analyzed images.")
-	if (os == "windows") suppressWarnings(shell('taskkill /f /im "java.exe"')) else system("killall java")
+  ans <- readline("Do you want to close ImageJ? Press any keys when you finish cheking analyzed images.")
+  if (os == "windows") suppressWarnings(shell('taskkill /f /im "java.exe"')) else system("killall java")
 }
 
 # file managemanet
-	res <- resmerge.ij(path=temp,prefix=prefix)
+  res <- resmerge.ij(path=temp,prefix=prefix)
 
-	if (log==T) res2 <- readtext.ij(path=temp)
+  if (log==T) res2 <- readtext.ij(path=temp)
 
 # unlink
-	cd <- getwd()
-	setwd(temp)
-	unlink(list.files(temp))
-	setwd(cd)
+  cd <- getwd()
+  setwd(temp)
+  unlink(list.files(temp))
+  setwd(cd)
 
-	if (log==T) return(list(summary=res,each.image=res2)) else return(res)
+  if (log==T) return(list(summary=res,each.image=res2)) else return(res)
 
 }
 
