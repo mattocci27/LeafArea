@@ -14,6 +14,6 @@ list.files(ex.dir)
 
 #run automated images analysis
 run.ij(set.directory = ex.dir, save.image=TRUE)
-=======
+
+
 res <- run.ij(set.directory = ex.dir, path.imagej = "ImageJ")
->>>>>>> dev_linux
