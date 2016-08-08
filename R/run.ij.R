@@ -33,9 +33,13 @@ if (os=="windows"){
   }
  } else {
   unix.check <- Sys.info()["sysname"]
-    if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ.app"
-  if(file.exists(paste(path.imagej,look,sep=""))!=T & file.exists(paste(path.imagej,look,sep="/"))!=T) {warning("Specify the correct path to ImageJ")
-      return("ImageJ not found")}
+    if(unix.check=="Linux") {look <- "ImageJ"
+  if(file.exists(paste(path.imagej,look, "ij.jar",sep=""))!=T & file.exists(paste(path.imagej,look, "ij.jar", sep="/"))!=T) {warning("Specify the correct path to ImageJ")
+      return("ImageJ not found")}} else if (unix.check == "Darwin"){
+        if(file.exists(paste(path.imagej, "Contents/Resources/Java/ij.jar", sep = "")) != T & file.exists(paste(path.imagej, "Contents/Resources/Java/ij.jar", sep = "/")) != T) {warning("Specify the correct path to ImageJ.app")
+            return("ImageJ not found")}
+
+      }
 }
 
 
