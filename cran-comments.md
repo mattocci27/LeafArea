@@ -3,7 +3,7 @@
 
 ## Test environments
 * local OS X install, R 3.3.1
-* ubuntu
+* ubuntu 14.04 R 3.3.1
 * windows server 2012 R2
 
 ## R CMD check results
