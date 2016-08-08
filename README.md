@@ -1,8 +1,12 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/LeafArea)](http://cran.r-project.org/package=LeafArea)
  [![Downloads](http://cranlogs.r-pkg.org/badges/LeafArea?color=brightgreen)](http://cran.rstudio.com/package=LeafArea)
+
+#### Note:
+Please install ImageJ from [http://imagej.nih.gov/ij/](url). ImageJ2 at
+[http://imagej.net](url) is not supported.
+
 # LeafArea
 The package LeafArea allows one to conveniently run ImageJ software within R. The package provides a user-friendly, automated tool for measuring leaf area from digital images. For more information on ImageJ, see the ImageJ User Guide, which is available [http://imagej.nih.gov/ij/](url).
-
 
 The ImageJ function `run.ij` computes the total area of all leaves (or leaf sections) in each image file in the target directory. Original leaf images are converted to black and white from threshold intensity levels, then leaf area is calculated by using leaf pixel counts and the calibration scale. The user can determine if the analyzed images will be saved for error checking: `run.ij (save.image = TRUE)` or `run.ij (save.image = FALSE)`.
 
@@ -21,7 +25,7 @@ From within R (>= 3.0.0), you can install:
     # install.packages("devtools")
     devtools::install_github("mattocci27/LeafArea")
     ````
-The package LeafArea requires ImageJ software, which is available from http://imagej.nih.gov/ij/. Details on how to install ImageJ on Linux, Mac OS X and Windows are available at http://imagej.nih.gov/ij/docs/install/. For Mac, the default install directory of ImageJ is “/Applications/ImageJ”. For Windows, "C:/Program Files/ImageJ”. Otherwise, you need to specify the path to ImageJ to use LeafArea in R (see 3.1 Setting path to ImageJ). Note that in Linux system, ImageJ should be installed from the above URL instead of via the command lines. Java is also required, which is available at https://java.com/en/.
+The package LeafArea requires ImageJ software, which is available from http://imagej.nih.gov/ij/. Details on how to install ImageJ on Linux, Mac OS X and Windows are available at http://imagej.nih.gov/ij/docs/install/. For Mac, the default path to ImageJ is “/Applications/ImageJ.app”. For Windows, "C:/Program Files/ImageJ. Otherwise, you need to specify the path to ImageJ to use LeafArea in R (see 3.1 Setting path to ImageJ). Note that in Linux system, ImageJ should be installed from the above URL instead of via the command lines. Java is also required, which is available at https://java.com/en/.
 
 ## 2 Image capture and file naming
 Capture leaf images by using a scanner and save them as jpeg or tiff files. Image size and resolution should be consistent across all the image files because the `LeafArea` functions estimate leaf area based on leaf pixel counts and the image size. Therefore, the `LeafArea` package does not support images from digital cameras, where the resolution depends on the distance of the camera to the object.
@@ -32,7 +36,7 @@ The `LeafArea` combines the leaf area of all images that share the same filename
 
 ## 3 How to run LeafArea
 ### 3.1 Setting path to ImageJ
-When ImageJ is not installed in the common install directory, you need to specify the path to ImageJ in run.ij. This depends on the operating system being used (Windows, Linux or Mac). For example, when ImageJ is installed in a directory named “ImageJ” on the desktop of a Mac or Linux system, you can specify the path by `typing run.ij (path.imagej = "~/Desktop/ImageJ")`. Typing `run.ij (path.imagej = ”C:/Users/<username>/Desktop/Imagej”)` works in Windows.
+When ImageJ is not installed in the common install directory in Linux or Windows, you need to specify the path to ImageJ in `run.ij`. This depends on the operating system being used (Windows, Linux or Mac). For example, when ImageJ is installed in a directory named “ImageJ” on the desktop of a Linux system, you can specify the path by `typing run.ij (path.imagej = "~/Desktop/ImageJ")`. Typing `run.ij (path.imagej = ”C:/Users/<username>/Desktop/ImageJ”)` works in Windows. For Mac, you do not have to specify the path as long as "ImageJ.app" exists in your computer.
 
 ### 3.2 Setting path to leaf images
 To analyze your leaf images, you need to specify the path to directory that contains leaf images. This depends on the operating system being used (Windows, Linux or Mac). For example, when the target directory named "leaf data" is on desktop of Mac or Linux, you can specify the path by typing `run.ij (set.directory = "~/Desktop/leaf data/")`. Typing `run.ij (set.directory = "C:/Users/<username>/Desktop/leaf data")` works in Windows.
