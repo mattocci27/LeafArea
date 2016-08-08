@@ -1,5 +1,5 @@
 ## Update
-
+This is an update for fixing bugs that affect path specification of ImageJ. 
 
 ## Test environments
 * local OS X install, R 3.3.1

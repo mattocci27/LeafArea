@@ -15,9 +15,9 @@ size.arg <- paste(low.size,upper.size,sep="-")
 
 
 os <-.Platform$OS.type
-if (is.null(path.imagej)==T){
+if (is.null(path.imagej) == T){
 imagej <- find.ij(ostype = .Platform$OS.type)
-if(imagej=="ImageJ not found") return("ImageJ not found") else path.imagej <- imagej
+if(imagej == "ImageJ not found") return("ImageJ not found") else path.imagej <- imagej
 }
 
 
@@ -31,12 +31,12 @@ if (os=="windows"){
   }  else if (file.exists(paste(path.imagej,"jre/bin/java.exe",sep=""))!=T & file.exists(paste(path.imagej,"jre/bin/java.exe",sep="/"))!=T) {warning("java was not found. Specify the correct path to ImageJ directory or reinstall ImageJ bundled with Java")
     return("ImageJ not found")
   }
- } #else {
-#   unix.check <-Sys.info()["sysname"]
-#     if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ.app"
-#   if(file.exists(paste(path.imagej,look,sep=""))!=T & file.exists(paste(path.imagej,look,sep="/"))!=T) {warning("Specify the correct path to ImageJ")
-#       return("ImageJ not found")}
-# }
+ } else {
+  unix.check <- Sys.info()["sysname"]
+    if(unix.check=="Linux") look <- "ImageJ" else look <- "ImageJ.app"
+  if(file.exists(paste(path.imagej,look,sep=""))!=T & file.exists(paste(path.imagej,look,sep="/"))!=T) {warning("Specify the correct path to ImageJ")
+      return("ImageJ not found")}
+}
 
 
 if (os == "windows"){temp <- paste(tempdir(),"\\",sep="")
