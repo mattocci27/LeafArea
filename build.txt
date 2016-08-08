@@ -16,4 +16,4 @@ list.files(ex.dir)
 run.ij(set.directory = ex.dir, save.image=TRUE)
 
 
-res <- run.ij(set.directory = ex.dir, path.imagej = "ImageJ")
+run.ij(set.directory = ex.dir, path.imagej = "moge")
