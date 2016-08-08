@@ -8,7 +8,7 @@ find.ij <- function(ostype = .Platform$OS.type){
     } else {
       unix.check <-Sys.info()["sysname"]
     if(unix.check=="Linux") {
-      warning("Specify the path to ImageJ")
+      warning("Specify the path to the directory that contains ImageJ.app and ij.jar")
     return("ImageJ not found")} else {
 
     imagej <- system("mdfind ImageJ.app", intern = TRUE)[1]
