@@ -5,7 +5,7 @@
 File management
 }
 \description{
-File management function. The output file contains sample names in the first column and total leaf area (cm2) of the sample (e.g., one individual plant or one ramet) in the second column.
+File management function. The output file contains sample names in the first column, total leaf area (cm2) of the sample (e.g., one individual plant or one ramet) in the second column and total perimeter (cm) of leaves of the sample in the third column.
 }
 \usage{
 resmerge.ij(path, prefix = "\\\\.|-")
@@ -27,10 +27,13 @@ A data frame of total leaf area for each sample
     \item{total.leaf.area}{
     Total leaf area of the sample (cm2)
     }
+    \item{total.perimeter}{
+    Total perimeter of leaves of the sample (cm)
+    }
 }
 
 \details{
-The resmerge.ij combines multiple tab-delimited text files with a leaf area value (one text file for each original JPEG image file) that share the same filename 'prefix', defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (no hyphen or period is required). For example, the areas of leaf images named A123-1.jpeg.txt, A123-2.jpeg.txt, and A123-3.jpeg.txt would be combined into a single total leaf area (A123). This feature allows the user to treat multiple images as belonging to a single sample, if desired. Note that the resmerge.ij does not count the number of leaves in each image; therefore if the user requires the number of leaves per image, the user must record these values.
+The resmerge.ij combines multiple tab-delimited text files with a leaf area value (one text file for each original JPEG image file) that share the same filename 'prefix', defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur (no hyphen or period is required). For example, the areas of leaf images named A123-1.jpeg.txt, A123-2.jpeg.txt, and A123-3.jpeg.txt would be combined into a single total leaf area (A123). This feature allows the user to treat multiple images as belonging to a single sample, if desired. Note that the resmerge.ij does not count the number of leaves in each image; therefore if the user requires the number of leaves per image, the user must record these values. Additionally, if an image contains cut leaf, estimeated perimeters include their cross section.
 }
 
 \author{
@@ -54,15 +57,15 @@ for (i in 1:7){
 #list of files
 list.files(tf)
 
-#combine multiple tab-delimited text files with a leaf area value 
+#combine multiple tab-delimited text files with a leaf area value
 #(one text file for each original JPEG image file) that share the same
-#filename 'prefix', defined as the part of the filename preceding the first 
+#filename 'prefix', defined as the part of the filename preceding the first
 #hyphen (-) or period (.).
 resmerge.ij(tf)
 
-##combine multiple tab-delimited text files with a leaf area value 
+##combine multiple tab-delimited text files with a leaf area value
 #(one text file for each original JPEG image file) that share the same
-#filename 'prefix', defined as the part of the filename preceding the first 
+#filename 'prefix', defined as the part of the filename preceding the first
 #'.txt'.
 resmerge.ij(tf,prefix=".txt")
 
@@ -72,4 +75,3 @@ unlink(list.files(tf))
 % R documentation directory.
 \keyword{ ~kwd1 }
 \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
-

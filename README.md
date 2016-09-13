@@ -1,9 +1,8 @@
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/LeafArea)](http://cran.r-project.org/package=LeafArea)
- [![Downloads](http://cranlogs.r-pkg.org/badges/LeafArea?color=brightgreen)](http://cran.rstudio.com/package=LeafArea)
-
 #### Note:
 Please install ImageJ from [http://imagej.nih.gov/ij/](url). ImageJ2 at
 [http://imagej.net](url) is not supported.
+
+
 
 # LeafArea
 The package LeafArea allows one to conveniently run ImageJ software within R. The package provides a user-friendly, automated tool for measuring leaf area from digital images. For more information on ImageJ, see the ImageJ User Guide, which is available [http://imagej.nih.gov/ij/](url).

@@ -7,7 +7,7 @@
 }
 \usage{data(leafdata)}
 \format{
-    A list with six data frames, A1-01.jpeg.txt, A1-02.jpeg.txt, A123-01.jpeg.txt, A123-02.jpeg.txt, A2.jpeg.txt and A300-1.jpeg.txt. The first column is the identity of image, and the second column is the are of the image (cm2).
+    A list with six data frames, A1-01.jpeg.txt, A1-02.jpeg.txt, A123-01.jpeg.txt, A123-02.jpeg.txt, A2.jpeg.txt and A300-1.jpeg.txt. The first column is the identity of image, the second column is the are of the image (cm2) and the thrid column is the perimeter of the image (cm).
 }
 
 \keyword{datasets}
