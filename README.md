@@ -47,15 +47,15 @@ ex.dir <- eximg()
 res <- run.ij(set.directory = ex.dir)
 ````
 
-The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column and total leaf area of sample (cm<sup>2</sup>) in the second column.
+The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column, total leaf area of sample (cm<sup>2</sup>) in the second column, and total perimeter of leaves (cm) in the third column.
 
 ```` r
 res
-#>   sample  total.leaf.area
-#> 1     A1         350.340
-#> 2   A123         418.473
-#> 3     A2         177.188
-#> 4   A300         384.919
+#> sample total.leaf.area perimeter
+#> 1     A1         350.340   174.742
+#> 2   A123         418.473   172.190
+#> 3     A2         177.188   154.636
+#> 4   A300         384.919   186.831
 ````
 ## 4 Automated leaf area analysis
 You can change the following setting according to your images.
@@ -86,55 +86,55 @@ When you want to remove angular objects (e.g., cut petioles, square papers for s
 By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
 
 ### 4.6 Result log
-A list object of data frames of area (cm<sup>2</sup>) of each object in each image can be returned by typing `run.ij (log = T)`:
+A list object of data frames of area (cm<sup>2</sup>) and perimeter (cm) of each object in each image can be returned by typing `run.ij (log = T)`:
 
 ```` r
 ex.dir <- eximg()
 run.ij(set.directory = ex.dir, log = T)
 
 #> $summary
-#>   sample total.leaf.area
-#> 1     A1         350.340
-#> 2   A123         418.473
-#> 3     A2         177.188
-#> 4   A300         384.919
+#>   sample total.leaf.area perimeter
+#> 1     A1         350.340   174.742
+#> 2   A123         418.473   172.190
+#> 3     A2         177.188   154.636
+#> 4   A300         384.919   186.831
 #>
 #> $each.image
 #> $each.image$`A1-01.jpeg.txt`
-#>      Area
-#> 1 116.799
-#> 2 124.069
+#>      Area Perim.
+#> 1 116.799 58.019
+#> 2 124.069 59.092
 #>
 #> $each.image$`A1-02.jpeg.txt`
-#>      Area
-#> 1 109.472
+#>      Area Perim.
+#> 1 109.472 57.631
 #>
 #> $each.image$`A123-01.jpeg.txt`
-#>      Area
-#> 1 184.773
+#>      Area Perim.
+#> 1 184.773 71.453
 #>
 #> $each.image$`A123-02.jpeg.txt`
-#>      Area
-#> 1 123.151
-#> 2 110.549
+#>      Area Perim.
+#> 1 123.151 50.086
+#> 2 110.549 50.651
 #>
 #> $each.image$A2.jpeg.txt
-#>     Area
-#> 1 43.328
-#> 2 47.558
-#> 3 41.427
-#> 4 44.875
+#>     Area Perim.
+#> 1 43.328 39.524
+#> 2 47.558 41.534
+#> 3 41.427 37.003
+#> 4 44.875 36.575
 #>
 #> $each.image$`A300-1.jpeg.txt`
-#>      Area
-#> 1 158.065
+#>      Area Perim.
+#> 1 158.065 66.844
 #>
 #> $each.image$`A300-2.jpeg.txt`
-#>      Area
-#> 1 124.784
-#> 2 102.070
+#>      Area Perim.
+#> 1 124.784 62.713
+#> 2 102.070 57.274
 ````
-By default, `run.ij` returns a single data frame object, which contains name of samples in the first column and total leaf area of sample (cm<sup>2</sup>) in the second column (see 3.0).
+By default, `run.ij` returns a single data frame object, which contains name of samples in the first column, total leaf area of sample (cm<sup>2</sup>) in the second column and total perimeter of leaves of sample (cm) in the third column (see 3.0).
 
 
 ### 4.7 Saving analyzed images
