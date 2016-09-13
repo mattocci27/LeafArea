@@ -17,3 +17,7 @@ run.ij(set.directory = ex.dir, save.image=TRUE)
 
 
 run.ij(set.directory = ex.dir, path.imagej = "moge")
+
+
+
+devtools::build("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea")

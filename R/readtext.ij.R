@@ -15,12 +15,11 @@ readtext.ij <- function(path){
       path <- paste(path,"/",sep="")
     }
 
-  for (i in 1:length(file.list))
-  {
-  temp <- read.delim(paste(path,file.list[i],sep=""))
-  data[[i]] <- data.frame(Area=temp$Area)
-  # data[[i]] <- read.delim(paste(path,file.list[i],sep=""))
-  names(data)[i]<-paste(file.list[i])
-  }
+  for (i in 1:length(file.list)){
+    temp <- read.delim(paste(path, file.list[i], sep = ""))
+    data[[i]] <- data.frame(Area = temp$Area)
+    # data[[i]] <- read.delim(paste(path,file.list[i],sep=""))
+    names(data)[i] <- paste(file.list[i])
+    }
   return(data)
   }
