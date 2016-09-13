@@ -5,8 +5,8 @@ readtext.ij <- function(path){
   file.list <- file.list[grep(".txt$",file.list)]
   if (length(file.list[-grep("macro|bat",file.list)]!=0)) file.list <- file.list[-grep("macro|bat",file.list)]
 
-  size<-length(0)
-  file.name<-length(0)
+  size <- length(0)
+  file.name <- length(0)
 
   data <- list()
 
