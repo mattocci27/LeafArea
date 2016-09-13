@@ -97,15 +97,15 @@ if (os == "windows"){
 
 
 #kill imageJ
-if(check.image==T){
+if(check.image == T){
   ans <- readline("Do you want to close ImageJ? Press any keys when you finish cheking analyzed images.")
   if (os == "windows") suppressWarnings(shell('taskkill /f /im "java.exe"')) else system("killall java")
 }
 
 # file managemanet
-  res <- resmerge.ij(path=temp,prefix=prefix)
+  res <- resmerge.ij(path = temp, prefix = prefix)
 
-  if (log==T) res2 <- readtext.ij(path=temp)
+  if (log == T) res2 <- readtext.ij(path = temp)
 
 # unlink
   cd <- getwd()
@@ -113,7 +113,7 @@ if(check.image==T){
   unlink(list.files(temp))
   setwd(cd)
 
-  if (log==T) return(list(summary=res,each.image=res2)) else return(res)
+  if (log==T) return(list(summary = res, each.image = res2)) else return(res)
 
 }
 
