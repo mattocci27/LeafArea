@@ -113,7 +113,7 @@ if(check.image == T){
   unlink(list.files(temp))
   setwd(cd)
 
-  if (log==T) return(list(summary = res, each.image = res2)) else return(res)
+  if (log == T) return(list(summary = res, each.image = res2)) else return(res)
 
 }
 
