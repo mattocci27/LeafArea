@@ -17,7 +17,7 @@ readtext.ij <- function(path){
 
   for (i in 1:length(file.list)){
     temp <- read.delim(paste(path, file.list[i], sep = ""))
-    data[[i]] <- data.frame(Area = temp$Area)
+    data[[i]] <- data.frame(Area = temp$Area, Perim. = temp$Perim.)
     # data[[i]] <- read.delim(paste(path,file.list[i],sep=""))
     names(data)[i] <- paste(file.list[i])
     }
