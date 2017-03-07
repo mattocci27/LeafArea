@@ -4,7 +4,7 @@ devtools::check("LeafArea")
 
 devtools::check("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea")
 
-devtools::install_github("mattocci27/LeafArea@dev")
+devtools::install_github("mattocci27/LeafArea@v0.1.7")
 
 
 library(LeafArea)

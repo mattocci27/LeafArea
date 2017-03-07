@@ -11,7 +11,7 @@ find.ij <- function(ostype = .Platform$OS.type){
       warning("Specify the path to the directory that contains ImageJ.app and ij.jar")
     return("ImageJ not found")} else {
 
-    imagej <- system("mdfind ImageJ.app", intern = TRUE)
+    imagej <- system("mdfind -name ImageJ | grep 'ImageJ.app'", intern = TRUE)
     if(length(imagej) != 0) return(imagej) else {
       warning("ImageJ.app was not found in the common install location on your system; When you run run.ij, specify the path to ImageJ.app")
       return("ImageJ not found")
