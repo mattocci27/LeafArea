@@ -1,8 +1,8 @@
 ## Update
-This is an update for fixing bugs that affect path specification of ImageJ(>=1.48).
+This is an update for fixing bugs for building.
 
 ## Test environments
-* local OS X install, R 3.3.1
+* local OS X install, R 3.3.2
 * ubuntu 14.04 R 3.3.1
 * windows server 2012 R2
 

@@ -2,7 +2,7 @@ pF3AVTf2o?Q
 
 devtools::check("LeafArea")
 
-devtools::check("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea")
+devtools::check_built("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea")
 
 devtools::install_github("mattocci27/LeafArea@v0.1.7")
 

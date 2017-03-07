@@ -31,7 +31,8 @@ Rasband, W.S., ImageJ, U. S. National Institutes of Health, Bethesda, Maryland, 
 
 Schneider, C.A., Rasband, W.S., Eliceiri, K.W. "NIH Image to ImageJ: 25 years of image analysis". Nature Methods 9, 671-675, 2012.\cr
 
-Abramoff, M.D., Magalhaes, P.J., Ram, S.J. "Image Processing with ImageJ". Biophotonics International, volume 11, issue 7, pp. 36-42, 2004. (This article is available \url{http://dspace.library.uu.nl/handle/1874/204900}.)\cr
+Abramoff, M.D., Magalhaes, P.J., Ram, S.J. "Image Processing with ImageJ".
+Biophotonics International, volume 11, issue 7, pp. 36-42, 2004. (This article is available \url{https://www.researchgate.net/publication/228334776_Image_Processing_with_Image}.)\cr
 }
 \keyword{ package }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
