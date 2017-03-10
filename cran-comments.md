@@ -1,5 +1,5 @@
 ## Update
-This is an update for fixing bugs for building.
+This is an update for fixing bugs for building. I have removed vignettes from the source.
 
 ## Test environments
 * local OS X install, R 3.3.3
