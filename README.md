@@ -80,7 +80,7 @@ Leaf images often contain dirt and dust. To prevent dust from affecting the imag
 
 When you want to remove angular objects (e.g., cut petioles, square papers for scale) from the images, the analyzed lower limit of circularity can be increased (default = 0). For example, `run.ij (low.circ = 0.3)` will skip cut petioles from the analysis.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/circ.png" width=480">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/circ.png", width=480">
 
 
 ### 4.5 File naming
