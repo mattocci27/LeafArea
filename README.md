@@ -1,5 +1,5 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/LeafArea)](http://cran.r-project.org/package=LeafArea)
- [![Downloads](http://cranlogs.r-pkg.org/badges/LeafArea?color=brightgreen)](http://cran.rstudio.com/package=LeafArea)
+ [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/LeafArea?color=blue)](http://cran.rstudio.com/package=LeafArea)
 
 #### Note:
 Please install ImageJ from [http://imagej.nih.gov/ij/](url). ImageJ2 at
