@@ -52,9 +52,9 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
       warning("Specify the correct path to ImageJ")
     return("ImageJ not found")}} else if (unix.check == "Darwin"){
       if(file.exists(paste(path.imagej, 
-         "Contents/Resources/Java/ij.jar", sep = "")) != T & 
+         "Contents/Java/ij.jar", sep = "")) != T & 
          file.exists(paste(path.imagej, 
-         "Contents/Resources/Java/ij.jar", sep = "/")) != T) {
+         "Contents/Java/ij.jar", sep = "/")) != T) {
         warning("Specify the correct path to ImageJ.app")
       return("ImageJ not found")}
     }
@@ -66,25 +66,26 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
   }
 
   if(save.image == T) macro <- paste(
-    'dir = getArgument;\n dir2 = "',temp,'";\n
-    list = getFileList(dir);\n 
-    open(dir + list[0]);\n 
+    'dir = getArgument;
+    dir2 = "',temp,'";
+    list = getFileList(dir); 
+    open(dir + list[0]); 
     run("Set Scale...", "distance=',distance.pixel,
-        ' known=',known.distance, ' pixel=1 unit=cm global");\n 
+        ' known=',known.distance, ' pixel=1 unit=cm global"); 
     for (i=0;\n i<list.length;\n i++) {
       open(dir + list[i]);\n 
-      width = getWidth() - ',trim.pixel, ';\n 
-      height = getHeight() -',trim.pixel,' ;\n
+      width = getWidth() - ',trim.pixel, '; 
+      height = getHeight() -',trim.pixel,' ;
       run("Canvas Size...", 
           "width=" + width + " height=" + height + "
-          position=Bottom-Center");\n 
-      run("8-bit");\n
-      run("Threshold...");\n
-      setAutoThreshold("Minimum");\n
+          position=Bottom-Center");
+      run("8-bit");
+      run("Threshold...");
+      setAutoThreshold("Minimum");
       run("Analyze Particles...", "size=',size.arg,
-          ' circularity=',circ.arg,' show=Masks display clear record");\n
-      saveAs("Measurements", dir2+list[i]+".txt");\n
-      saveAs("tiff", dir+list[i]+ "_mask.tif");\n
+          ' circularity=',circ.arg,' show=Masks display clear record");
+      saveAs("Measurements", dir2+list[i]+".txt");
+      saveAs("tiff", dir+list[i]+ "_mask.tif");
     }',sep="") else 
     macro <- paste(
      'dir = getArgument;\n 
@@ -155,8 +156,11 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
         "ij.jar -ijpath ",path.imagej," ",exe,tempmacro," ", set.directory,
         sep = ""), wait = wait)
       } else {
+      #system(paste("java -Xmx", set.memory, "g -jar ", path.imagej,
+      # "Contents/Resources/Java/ij.jar -ijpath ", path.imagej, " ", exe,
+      # tempmacro, " ", set.directory, sep = ""), wait = wait)
       system(paste("java -Xmx", set.memory, "g -jar ", path.imagej,
-       "Contents/Resources/Java/ij.jar -ijpath ", path.imagej, " ", exe,
+       "Contents/Java/ij.jar -ijpath ", path.imagej, " ", exe,
        tempmacro, " ", set.directory, sep = ""), wait = wait)
     }
   }
