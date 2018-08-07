@@ -3,10 +3,10 @@
 readtext.ij <- function(path){
   file.list <- list.files(path)
   file.list <- file.list[grep(".txt$",file.list)]
-  if (length(file.list[-grep("macro|bat",file.list)] != 0)) file.list <- file.list[-grep("macro|bat",file.list)]
+  if (length(file.list[-grep("macro|bat",file.list)]!=0)) file.list <- file.list[-grep("macro|bat",file.list)]
 
-  size <- length(0)
-  file.name <- length(0)
+  size<-length(0)
+  file.name<-length(0)
 
   data <- list()
 
@@ -16,10 +16,10 @@ readtext.ij <- function(path){
     }
 
   for (i in 1:length(file.list)){
-    temp <- read.delim(paste(path, file.list[i], sep = ""))
-    data[[i]] <- data.frame(Area = temp$Area, Perim. = temp$Perim.)
+    temp <- read.delim(paste(path,file.list[i],sep=""))
+    data[[i]] <- data.frame(Area=temp$Area)
     # data[[i]] <- read.delim(paste(path,file.list[i],sep=""))
-    names(data)[i] <- paste(file.list[i])
-    }
+    names(data)[i]<-paste(file.list[i])
+  }
   return(data)
   }
