@@ -3,7 +3,6 @@ Please install ImageJ from [http://imagej.nih.gov/ij/](url). ImageJ2 at
 [http://imagej.net](url) is not supported.
 
 
-
 # LeafArea
 The package LeafArea allows one to conveniently run ImageJ software within R. The package provides a user-friendly, automated tool for measuring leaf area from digital images. For more information on ImageJ, see the ImageJ User Guide, which is available [http://imagej.nih.gov/ij/](url).
 
@@ -34,6 +33,7 @@ The `LeafArea` combines the leaf area of all images that share the same filename
 ![moge](https://github.com/mattocci27/LeafArea/blob/master/vignettes/Fig2_final.png)
 
 ## 3 How to run LeafArea
+
 ### 3.1 Setting path to ImageJ
 When ImageJ is not installed in the common install directory in Linux or Windows, you need to specify the path to ImageJ in `run.ij`. This depends on the operating system being used (Windows, Linux or Mac). For example, when ImageJ is installed in a directory named “ImageJ” on the desktop of a Linux system, you can specify the path by `typing run.ij (path.imagej = "~/Desktop/ImageJ")`. Typing `run.ij (path.imagej = ”C:/Users/<username>/Desktop/ImageJ”)` works in Windows. For Mac, you do not have to specify the path as long as "ImageJ.app" exists in your computer.
 
@@ -42,6 +42,7 @@ To analyze your leaf images, you need to specify the path to directory that cont
 
 ### 3.3 Example
 This is an example in the R help. First, I use `eximg` function to specify the path to example leaf images in the R temporary directory. Then, I run the `run.ij` function which will analyze leaf area automatically:
+
 ```` r
 ex.dir <- eximg()
 res <- run.ij(set.directory = ex.dir)
@@ -57,6 +58,7 @@ res
 #> 3     A2         177.188   154.636
 #> 4   A300         384.919   186.831
 ````
+
 ## 4 Automated leaf area analysis
 You can change the following setting according to your images.
 
