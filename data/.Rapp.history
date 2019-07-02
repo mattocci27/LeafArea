@@ -1,0 +1,8 @@
+load("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea/data/leafdata.RData")
+ls()
+moge2
+load("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea/data/leafdata.RData")
+ls()
+load("/Users/mattocci/Dropbox/MS/LeafSizeMS/LeafArea/data/leafdata.RData")
+ls()
+leafdata
