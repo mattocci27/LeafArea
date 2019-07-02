@@ -6,3 +6,5 @@
 ^note\.R$
 ^README\.md$
 ^cran-comments\.md$
+macro.txt
+^img

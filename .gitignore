@@ -3,3 +3,4 @@
 .Rhistory
 vignettes/*.R
 .DS_Store
+build.rmd
