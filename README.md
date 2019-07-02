@@ -11,8 +11,11 @@ The package LeafArea allows one to conveniently run ImageJ software within R. Th
 
 The ImageJ function `run.ij` computes the total area of all leaves (or leaf sections) in each image file in the target directory. Original leaf images are converted to black and white from threshold intensity levels, then leaf area is calculated by using leaf pixel counts and the calibration scale. The user can determine if the analyzed images will be saved for error checking: `run.ij (save.image = TRUE)` or `run.ij (save.image = FALSE)`.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/img/Fig1_final.png", width="320px">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/Fig1_final.png", width="320px">
 
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/Fig1_final.png">
+
+![moge1](https://github.com/mattocci27/LeafArea/blob/master/figs/Fig1_final.png)
 
 ## 1 Prerequisites
 From within R (>= 3.0.0), you can install:
@@ -33,7 +36,7 @@ Capture leaf images by using a scanner and save them as jpeg or tiff files. Imag
 
 The `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. For example, the areas of leaf images named A123-1.jpeg, A123-2.jpeg, and A123-3.jpeg would be combined into a single total leaf area (A123). This feature allows the user to treat multiple images as belonging to a single sample, if desired. Note that the functions in the package do not count the number of leaves in each image. If the user requires the number of leaves per image, the user must record these values by themselves.
 
-![moge](https://github.com/mattocci27/LeafArea/blob/master/img/Fig2_final.png)
+![moge](https://github.com/mattocci27/LeafArea/blob/master/figs/Fig2_final.png)
 
 ## 3 How to run LeafArea
 
@@ -74,17 +77,17 @@ The amount of memory available can be increased. By default, `LeafArea` uses 4 G
 ### 4.3 Trimming images
 The edges of images may have shadowing, which can affect image analysis (i.e., ImageJ may recognize the shaded area as leaf area). The edges of images can be removed by specifying the number of pixels (default = 20). For example, `run.ij (trim.pixel = 20)` will remove 20 pixels from the edges of each image.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/img/trim.png" width="480">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/trim.png" width="480">
 
 ### 4.4 Size and circularity
 Leaf images often contain dirt and dust. To prevent dust from affecting the image analysis, the lower limit of analyzed size can be specified. For example, typing `run.ij (low.size = 0.7)` will remove objects smaller than 0.7 cm<sup>2</sup> in the analysis.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/img/size.png" width="320">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/size.png" width="320">
 
 
 When you want to remove angular objects (e.g., cut petioles, square papers for scale) from the images, the analyzed lower limit of circularity can be increased (default = 0). For example, `run.ij (low.circ = 0.3)` will skip cut petioles from the analysis.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/img/circ.png" width=480">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/circ.png" width=480">
 
 
 ### 4.5 File naming
