@@ -1,16 +1,14 @@
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/LeafArea)](http://cran.r-project.org/package=LeafArea)
- [![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/LeafArea?color=blue)](http://cran.rstudio.com/package=LeafArea)
-
 #### Note:
 Please install ImageJ from [http://imagej.nih.gov/ij/](url). ImageJ2 at
 [http://imagej.net](url) is not supported.
+
 
 # LeafArea
 The package LeafArea allows one to conveniently run ImageJ software within R. The package provides a user-friendly, automated tool for measuring leaf area from digital images. For more information on ImageJ, see the ImageJ User Guide, which is available [http://imagej.nih.gov/ij/](url).
 
 The ImageJ function `run.ij` computes the total area of all leaves (or leaf sections) in each image file in the target directory. Original leaf images are converted to black and white from threshold intensity levels, then leaf area is calculated by using leaf pixel counts and the calibration scale. The user can determine if the analyzed images will be saved for error checking: `run.ij (save.image = TRUE)` or `run.ij (save.image = FALSE)`.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/Fig1_final.png", width="320px">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/img/Fig1_final.png", width="320px">
 
 
 ## 1 Prerequisites
@@ -32,9 +30,10 @@ Capture leaf images by using a scanner and save them as jpeg or tiff files. Imag
 
 The `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. For example, the areas of leaf images named A123-1.jpeg, A123-2.jpeg, and A123-3.jpeg would be combined into a single total leaf area (A123). This feature allows the user to treat multiple images as belonging to a single sample, if desired. Note that the functions in the package do not count the number of leaves in each image. If the user requires the number of leaves per image, the user must record these values by themselves.
 
-![moge](https://github.com/mattocci27/LeafArea/blob/master/figs/Fig2_final.png)
+![moge](https://github.com/mattocci27/LeafArea/blob/master/img/Fig2_final.png)
 
 ## 3 How to run LeafArea
+
 ### 3.1 Setting path to ImageJ
 When ImageJ is not installed in the common install directory in Linux or Windows, you need to specify the path to ImageJ in `run.ij`. This depends on the operating system being used (Windows, Linux or Mac). For example, when ImageJ is installed in a directory named “ImageJ” on the desktop of a Linux system, you can specify the path by `typing run.ij (path.imagej = "~/Desktop/ImageJ")`. Typing `run.ij (path.imagej = ”C:/Users/<username>/Desktop/ImageJ”)` works in Windows. For Mac, you do not have to specify the path as long as "ImageJ.app" exists in your computer.
 
@@ -43,21 +42,23 @@ To analyze your leaf images, you need to specify the path to directory that cont
 
 ### 3.3 Example
 This is an example in the R help. First, I use `eximg` function to specify the path to example leaf images in the R temporary directory. Then, I run the `run.ij` function which will analyze leaf area automatically:
+
 ```` r
 ex.dir <- eximg()
 res <- run.ij(set.directory = ex.dir)
 ````
 
-The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column and total leaf area of sample (cm<sup>2</sup>) in the second column.
+The object `ex.dir` is the path to the R temporary directory that contains example leaf images. This temporary directory will be eventually deleted after the analysis. The object `res`, returned from `LeafArea` is a data frame object, which contains name of samples in the first column, total leaf area of sample (cm<sup>2</sup>) in the second column, and total perimeter of leaves (cm) in the third column.
 
 ```` r
 res
-#>   sample  total.leaf.area
-#> 1     A1         350.340
-#> 2   A123         418.473
-#> 3     A2         177.188
-#> 4   A300         384.919
+#> sample total.leaf.area perimeter
+#> 1     A1         350.340   174.742
+#> 2   A123         418.473   172.190
+#> 3     A2         177.188   154.636
+#> 4   A300         384.919   186.831
 ````
+
 ## 4 Automated leaf area analysis
 You can change the following setting according to your images.
 
@@ -70,72 +71,72 @@ The amount of memory available can be increased. By default, `LeafArea` uses 4 G
 ### 4.3 Trimming images
 The edges of images may have shadowing, which can affect image analysis (i.e., ImageJ may recognize the shaded area as leaf area). The edges of images can be removed by specifying the number of pixels (default = 20). For example, `run.ij (trim.pixel = 20)` will remove 20 pixels from the edges of each image.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/trim.png" width="480">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/img/trim.png" width="480">
 
 ### 4.4 Size and circularity
 Leaf images often contain dirt and dust. To prevent dust from affecting the image analysis, the lower limit of analyzed size can be specified. For example, typing `run.ij (low.size = 0.7)` will remove objects smaller than 0.7 cm<sup>2</sup> in the analysis.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/size.png" width="320">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/img/size.png" width="320">
 
 
 When you want to remove angular objects (e.g., cut petioles, square papers for scale) from the images, the analyzed lower limit of circularity can be increased (default = 0). For example, `run.ij (low.circ = 0.3)` will skip cut petioles from the analysis.
 
-<img src="https://github.com/mattocci27/LeafArea/blob/master/figs/circ.png", width=480">
+<img src="https://github.com/mattocci27/LeafArea/blob/master/img/circ.png" width=480">
 
 
 ### 4.5 File naming
 By default, the `LeafArea` combines the leaf area of all images that share the same filename “prefix”, defined as the part of the filename preceding the first hyphen (-) or period (.) that may occur. You can change this setting by using regular expressions. For example, typing `run.ij (prefix = ‘\\.|-|_’)` will combine the area of leaf images named A123-1.jpeg, A123-2_1.jpeg, A123-2_1.jpeg into a single total leaf area (A123).
 
 ### 4.6 Result log
-A list object of data frames of area (cm<sup>2</sup>) of each object in each image can be returned by typing `run.ij (log = T)`:
+A list object of data frames of area (cm<sup>2</sup>) and perimeter (cm) of each object in each image can be returned by typing `run.ij (log = T)`:
 
 ```` r
 ex.dir <- eximg()
 run.ij(set.directory = ex.dir, log = T)
 
 #> $summary
-#>   sample total.leaf.area
-#> 1     A1         350.340
-#> 2   A123         418.473
-#> 3     A2         177.188
-#> 4   A300         384.919
+#>   sample total.leaf.area perimeter
+#> 1     A1         350.340   174.742
+#> 2   A123         418.473   172.190
+#> 3     A2         177.188   154.636
+#> 4   A300         384.919   186.831
 #>
 #> $each.image
 #> $each.image$`A1-01.jpeg.txt`
-#>      Area
-#> 1 116.799
-#> 2 124.069
+#>      Area Perim.
+#> 1 116.799 58.019
+#> 2 124.069 59.092
 #>
 #> $each.image$`A1-02.jpeg.txt`
-#>      Area
-#> 1 109.472
+#>      Area Perim.
+#> 1 109.472 57.631
 #>
 #> $each.image$`A123-01.jpeg.txt`
-#>      Area
-#> 1 184.773
+#>      Area Perim.
+#> 1 184.773 71.453
 #>
 #> $each.image$`A123-02.jpeg.txt`
-#>      Area
-#> 1 123.151
-#> 2 110.549
+#>      Area Perim.
+#> 1 123.151 50.086
+#> 2 110.549 50.651
 #>
 #> $each.image$A2.jpeg.txt
-#>     Area
-#> 1 43.328
-#> 2 47.558
-#> 3 41.427
-#> 4 44.875
+#>     Area Perim.
+#> 1 43.328 39.524
+#> 2 47.558 41.534
+#> 3 41.427 37.003
+#> 4 44.875 36.575
 #>
 #> $each.image$`A300-1.jpeg.txt`
-#>      Area
-#> 1 158.065
+#>      Area Perim.
+#> 1 158.065 66.844
 #>
 #> $each.image$`A300-2.jpeg.txt`
-#>      Area
-#> 1 124.784
-#> 2 102.070
+#>      Area Perim.
+#> 1 124.784 62.713
+#> 2 102.070 57.274
 ````
-By default, `run.ij` returns a single data frame object, which contains name of samples in the first column and total leaf area of sample (cm<sup>2</sup>) in the second column (see 3.0).
+By default, `run.ij` returns a single data frame object, which contains name of samples in the first column, total leaf area of sample (cm<sup>2</sup>) in the second column and total perimeter of leaves of sample (cm) in the third column (see 3.0).
 
 
 ### 4.7 Saving analyzed images

@@ -1,0 +1,37 @@
+//
+dir = getArgument;
+dir2 = "',temp,'";
+list = getFileList(dir);
+open(dir + list[0]);
+run("Set Scale...", "distance=',distance.pixel, ' known=',known.distance, ' pixel=1 unit=cm global");
+for (i=0; i<list.length; i++) {
+  open(dir + list[i]);
+  width = getWidth() - ',trim.pixel, ';
+  height = getHeight() -',trim.pixel,' ;
+  run("Canvas Size...", "width=" + width + " height=" + height + " position=Bottom-Center");
+  run("8-bit");
+  run("Threshold...");
+  setAutoThreshold("Minimum");
+  run("Analyze Particles...", "size=',size.arg,' circularity=',circ.arg,' show=Masks display clear record");
+  saveAs("Measurements", dir2+list[i]+".txt");
+  saveAs("tiff", dir+list[i]+ "_mask.tif")};
+
+
+
+// else
+dir = getArgument;
+dir2 = "',temp,'";
+list = getFileList(dir);
+open(dir + list[0]);
+run("Set Scale...", "distance=',distance.pixel, ' known=',known.distance, ' pixel=1 unit=cm global");
+for (i=0;
+i<list.length; i++) {
+  open(dir + list[i]);
+  width = getWidth() - ',trim.pixel, ';
+  height = getHeight() -',trim.pixel,' ;
+  run("Canvas Size...", "width=" + width + " height=" + height + " position=Bottom-Center");
+  run("8-bit");
+  run("Threshold...");
+  setAutoThreshold("Minimum");
+  run("Analyze Particles...", "size=',size.arg,' circularity=',circ.arg,' show=Masks display clear record");
+  saveAs("Measurements", dir2+list[i]+".txt")};

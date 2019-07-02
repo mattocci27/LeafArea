@@ -1,0 +1,17 @@
+citHeader("To cite LeafArea in publications, please use:")
+
+citEntry(entry = "article",
+title = "{{LeafArea}}: An {{R}} Package for Rapid Digital Image Analysis of Leaf Area",
+  volume = "30",
+  copyright = "All rights reserved",
+  issn = "14401703",
+  number = "6",
+  journal = "Ecological Research",
+  doi = "10.1007/s11284-015-1307-x",
+  author = "Katabuchi, Masatoshi",
+  month = "sep",
+  year = "2015",
+  keywords = "Leaf size, Plant functional traits, Area normalization, Leaf mass per area (LMA), Specific leaf area (SLA)",
+  pages = "1073-1077",
+  textVersion = "Katabuchi, M. 2015. LeafArea: an R package for rapid digital image analysis of leaf area. Ecological Reserach 30:1073-1077."
+)

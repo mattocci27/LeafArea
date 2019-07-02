@@ -17,8 +17,8 @@ The package LeafArea allows one to conveniently run ImageJ software within R. Th
 \tabular{ll}{
 Package: \tab LeafArea\cr
 Type: \tab Package\cr
-Version: \tab 0.1.5\cr
-Date: \tab 2016-08-08\cr
+Version: \tab 0.1.8\cr
+Date: \tab 2019-07-01\cr
 License: \tab GPL-2\cr
 }
 
@@ -34,8 +34,3 @@ Schneider, C.A., Rasband, W.S., Eliceiri, K.W. "NIH Image to ImageJ: 25 years of
 Abramoff, M.D., Magalhaes, P.J., Ram, S.J. "Image Processing with ImageJ".
 Biophotonics International, volume 11, issue 7, pp. 36-42, 2004. (This article is available \url{https://www.researchgate.net/publication/228334776_Image_Processing_with_Image}.)\cr
 }
-\keyword{ package }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

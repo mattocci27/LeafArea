@@ -6,5 +6,5 @@
 ^note\.R$
 ^README\.md$
 ^cran-comments\.md$
-build.txt
-^figs$
+macro.txt
+^img
