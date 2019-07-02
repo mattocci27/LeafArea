@@ -1,7 +1,7 @@
 run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
                    distance.pixel = 826, known.distance = 21, trim.pixel = 20,
                    low.circ = 0, upper.circ = 1, low.size = 0.7,
-                   upper.size = "Infinity", prefix="\\.|-", log = F,
+                   upper.size = "Infinity", prefix = "\\.|-", log = F,
                    check.image = F, save.image = F){
 
   file.list <- list.files(set.directory)
@@ -47,13 +47,12 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
   } else {
     unix.check <- Sys.info()["sysname"]
     if (unix.check == "Linux") {
-      look <- "ImageJ"
-    if (file.exists(paste(path.imagej, look, "ij.jar", sep = "")) != T &
-       file.exists(paste(path.imagej, look, "ij.jar", sep = "/")) != T) {
-      warning("Specify the correct path to ImageJ")
-      return("ImageJ not found")
-       }
-      } else if (unix.check == "Darwin"){
+      if (file.exists(paste(path.imagej, "ij.jar", sep = "")) != T &
+         file.exists(paste(path.imagej, "ij.jar", sep = "/")) != T) {
+        warning("Specify the correct path to ImageJ")
+        return("ImageJ not found")
+         }
+    } else if (unix.check == "Darwin"){
       if (file.exists(paste(path.imagej,
          "Contents/Java/ij.jar", sep = "")) != T &
          file.exists(paste(path.imagej,
@@ -77,7 +76,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
     list = getFileList(dir);
     open(dir + list[0]);
     run("Set Scale...", "distance=', distance.pixel,
-        ' known=',known.distance, ' pixel=1 unit=cm global");
+        ' known=', known.distance, ' pixel=1 unit=cm global");
     for (i=0;\n i<list.length;\n i++) {
       open(dir + list[i]);\n
       width = getWidth() - ', trim.pixel, ';
