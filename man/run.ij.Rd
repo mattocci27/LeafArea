@@ -96,14 +96,21 @@ Masatoshi Katabuchi <mattocci27@gmail.com>}
 # you do not have to specify the path to ImageJ
 # /Applications/ImageJ <Mac>
 # C:/Program Files/ImageJ <Windows>
-# Linux always needs to specify the path to ImageJ. For example, path = "~/ImageJ"
+# Linux always needs to specify the path to the directory that contains `ij.jar`.
+# For example, path = "~/ImageJ"
 
 # prepare the target directory that contains example image files
 ex.dir <- eximg()
 list.files(ex.dir)
 
 #run automated images analysis
-run.ij(set.directory = ex.dir, save.image = TRUE)
+run.ij(set.directory = ex.dir, save.image = FALSE)
+
+## Not run:
+ex.dir <- eximg()
+list.files(ex.dir)
+# run.ij(set.directory = ex.dir, save.image = TRUE)
+## End(**Not run**)
 
 # note: in this example, analyzed images are exported to a temporary
 # directory, which will be eventually deleted.
