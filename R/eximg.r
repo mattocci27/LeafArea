@@ -1,3 +1,11 @@
+#' Utility function
+#'
+#' Exports sample image files to R temporary directory and returns a path to the sample image files. This function is only used in the example of \code{\link{run.ij}}.
+#' @seealso \code{\link{run.ij}} which this function wraps
+#' @return Jpeg files to the R temporary directory and a path to the sample image files.
+#' @author Masatoshi Katabuchi \email{mattocci27@gmail.com}
+#' @export
+
 eximg <- function(){
   os <- .Platform$OS.type
   if (os == "windows"){

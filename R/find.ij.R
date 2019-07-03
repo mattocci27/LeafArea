@@ -1,3 +1,16 @@
+#' Checking a path to ImageJ
+#'
+#' Check if ImageJ is installed in the correct directory.
+#'
+#' When ImageJ, including ij.jar and Java, is not installed in the common location, users need to specify the path to ImageJ in \code{\link{run.ij}}.
+#'
+#' @param ostype the Operating system types.
+#' @return A path for ImageJ application. On unix this will always be 
+#' "/Applications/ImageJ/". On Windows this will always be "C:\\Program Files\\ImageJ\\".
+#' @author Masatoshi Katabuchi \email{mattocci27@gmail.com}
+#' @export
+
+
 ##works in Mac
 find.ij <- function(ostype = .Platform$OS.type){
   if (ostype == "windows"){

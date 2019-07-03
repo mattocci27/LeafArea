@@ -2,7 +2,7 @@ Package: LeafArea
 Type: Package
 Title: Rapid Digital Image Analysis of Leaf Area
 Version: 0.1.8
-Date: 2019-07-01
+Date: 2019-07-03
 Author: Masatoshi Katabuchi <mattocci27@gmail.com>
 Maintainer: Masatoshi Katabuchi <mattocci27@gmail.com>
 Description: An interface for the image processing program 'ImageJ', which
