@@ -11,6 +11,7 @@ for (i=0; i<list.length; i++) {
   run("Canvas Size...", "width=" + width + " height=" + height + " position=Bottom-Center");
   run("8-bit");
   run("Threshold...");
+  run("Set Measurements...", "area mean min perimeter redirect=None decimal=3");
   setAutoThreshold("Minimum");
   run("Analyze Particles...", "size=',size.arg,' circularity=',circ.arg,' show=Masks display clear record");
   saveAs("Measurements", dir2+list[i]+".txt");

@@ -168,6 +168,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
      run("8-bit");\n
      run("Threshold...");\n
      setAutoThreshold("Minimum");\n
+     run("Set Measurements...", "area mean min perimeter redirect=None decimal=3");\n
      run("Analyze Particles...", "size=', size.arg,
          ' circularity=', circ.arg,' show=Masks display clear record");\n
      saveAs("Measurements", dir2+list[i]+".txt");\n saveAs("tiff", dir+list[i]+ "_mask.tif");\n
@@ -188,6 +189,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
      run("8-bit");\n
      run("Threshold...");\n
      setAutoThreshold("Minimum");\n
+     run("Set Measurements...", "area mean min perimeter redirect=None decimal=3");\n
      run("Analyze Particles...", "size=', size.arg,
          ' circularity=', circ.arg,' show=Masks display clear record");\n
          saveAs("Measurements", dir2+list[i]+".txt");\n

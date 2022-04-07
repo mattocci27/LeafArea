@@ -11,24 +11,23 @@
 #' @author Masatoshi Katabuchi \email{mattocci27@gmail.com}
 #' @seealso \code{\link{run.ij}}, \code{\link{resmerge.ij}}
 #' @examples
-#' #prepare example files
+#' # prepare example files
 #' data(leafdata)
 #' tf <- paste(tempdir(), "/", sep = "")
-#' for (i in 1:7){
-#' 	write.table(leafdata[[i]],paste(tf,names(leafdata)[i],sep=""),sep="\t")
+#' for (i in 1:7) {
+#'   write.table(leafdata[[i]], paste(tf, names(leafdata)[i], sep = ""), sep = "\t")
 #' }
-#' 
-#' #list of files
+#'
+#' # list of files
 #' list.files(tf)
-#' 
+#'
 #' readtext.ij(tf)
-#' 
+#'
 #' unlink(list.files(tf))
-
-readtext.ij <- function(path){
+readtext.ij <- function(path) {
   file.list <- list.files(path)
   file.list <- file.list[grep(".txt$", file.list)]
-  if (length(file.list[-grep("macro|bat", file.list)] != 0)){
+  if (length(file.list[-grep("macro|bat", file.list)] != 0)) {
     file.list <- file.list[-grep("macro|bat", file.list)]
   }
 
@@ -38,15 +37,15 @@ readtext.ij <- function(path){
   data <- list()
 
   temp.slash <- substr(path, nchar(path), nchar(path))
-    if (temp.slash != "/" & temp.slash != "\\"){
-      path <- paste(path, "/", sep = "")
-    }
+  if (temp.slash != "/" & temp.slash != "\\") {
+    path <- paste(path, "/", sep = "")
+  }
 
-  for (i in 1:length(file.list)){
+  for (i in 1:length(file.list)) {
     temp <- read.delim(paste(path, file.list[i], sep = ""))
-    data[[i]] <- data.frame(Area = temp$Area)
+    data[[i]] <- data.frame(Area = temp$Area, Perim = temp$Perim.)
     # data[[i]] <- read.delim(paste(path,file.list[i],sep=""))
     names(data)[i] <- paste(file.list[i])
-   }
+  }
   return(data)
 }
