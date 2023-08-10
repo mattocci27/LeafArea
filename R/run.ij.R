@@ -88,7 +88,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
                    check.image = F, save.image = F){
 
   file.list <- list.files(set.directory)
-  file.list <- file.list[grep(".jpeg$|.jpg$|.JPEG$|.JPG$|.tif$|.tiff$|.Tif$|.Tiff$", file.list)]
+  file.list <- file.list[grep(".jpeg$|.jpg$|.JPEG$|.JPG$|.tif$|.tiff$|.Tif$|.Tiff$|.png$|.PNG$", file.list)]
 
   if (length(file.list) == 0) return("No images in the directory")
 
