@@ -160,6 +160,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
      open(dir + list[0]);\n
      run("Set Scale...", "distance=',distance.pixel, ' known=', known.distance,
          ' pixel=1 unit=cm global");\n
+     run("Set Measurements...", "area display redirect=None decimal=3");\n
      for (i=0;\n i<list.length;\n i++) { open(dir + list[i]);\n
      width = getWidth() - ',trim.pixel, ';\n
      height = getHeight() -',trim.pixel, ' ;\n
@@ -180,6 +181,7 @@ run.ij <- function(path.imagej = NULL, set.memory = 4, set.directory,
      open(dir + list[0]);\n
      run("Set Scale...", "distance=',distance.pixel, ' known=', known.distance,
          ' pixel=1 unit=cm global");\n
+     run("Set Measurements...", "area display redirect=None decimal=3");\n
      for (i=0;\n i<list.length;\n i++) { open(dir + list[i]);\n
      width = getWidth() - ',trim.pixel, ';\n
      height = getHeight() -',trim.pixel, ' ;\n
